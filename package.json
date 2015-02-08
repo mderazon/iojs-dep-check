@@ -1,6 +1,6 @@
 {
   "name": "iojs-dep-check",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "checks if your module's dependency are compatible with io.js",
   "main": "index.js",
   "bin": {

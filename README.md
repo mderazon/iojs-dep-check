@@ -7,7 +7,6 @@ The list of broken modules is dynamically taken (scraped) from [https://github.c
 
 **this does not mean that your project will work well with iojs**
 
-
 ### how
 this is **not** on npm as it might break / become irrelevant / hasn't been tested.
 
@@ -17,7 +16,7 @@ $ cd iojs-dep-check
 $ npm install -g .
 ```
 
-then go to any folder containing a `package.json`
+then go to any folder containing a `package.json` `*`
 ```
 $ iojs-dep-check
 ```
@@ -26,3 +25,5 @@ when you're done, throw this away
 ```
 $ npm uninstall -g iojs-dep-check
 ```
+
+* make sure to run `npm install` on your project before running the tool

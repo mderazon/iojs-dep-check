@@ -38,29 +38,32 @@ request.get('https://github.com/iojs/io.js/issues/456', function(err, res) {
         throw err;
       }
       names.push(JSON.parse(res.body).name);
+      // check if we covered all repositories on the list
       if (names.length === repos.length) {
-        // do stuff
+        // traverse local npm modules to see if we have a problematic package from the list
         npm.commands.ls(null, {silent: true}, function(err, obj) {
           find_deps(obj);
-          modules = lodash.uniq(modules);
-          names = lodash.intersection(modules, names);
-          if (names[0]) {
-            console.log('The following dependencies will not work with io.js:', names);
+          var conflicting = modules.filter(function(m) {
+            return names.indexOf(m.name) !== -1;
+          });
+          if (conflicting.length) {
+            console.log('The following dependencies might not work with io.js:');
+            conflicting.forEach(function(m) {
+              console.log(m.name, ':', m.path.substring(process.cwd().length + 1, m.path.length));
+            });
           } else {
-            console.log('Your dependencies looks okay from here');
+            console.log('Your dependencies look okay from here');
           }
         });
       }
     });
-    
   });
-  
 });
 
 
 // recursively traverse dependency tree and collect dependencies
 function find_deps(node) {
-  modules.push(node.name);
+  modules.push({name: node.name, path: node.path});
   var deps = node.dependencies;
   Object.keys(deps).forEach(function(dep) {
     find_deps(deps[dep]);
