@@ -5,9 +5,11 @@ Checks your npm dependencies to see if there are any modules that don't work wit
 The list of broken modules is dynamically taken (scraped) from [https://github.com/iojs/io.js/issues/456](https://github.com/iojs/io.js/issues/456)  
 (only modules with `open` badge are taken)
 
+**this does not mean that your project will work well with iojs**
+
 
 ### how
-this is **not** on npm as the method it is might break / become irrelevant / hasn't been tested.
+this is **not** on npm as it might break / become irrelevant / hasn't been tested.
 
 download / clone this repo
 ```
