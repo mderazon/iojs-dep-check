@@ -1,6 +1,6 @@
 # iojs-dep-check
 
-Checks your npm dependencies to see if there are any modules that don't work with io.js.
+Checks your npm dependencies to see if there are any modules that won't currently work with io.js.
 
 The list of broken modules is dynamically taken (scraped) from [https://github.com/iojs/io.js/issues/456](https://github.com/iojs/io.js/issues/456)  
 (only modules with `open` badge are taken)
