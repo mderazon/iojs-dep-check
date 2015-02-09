@@ -8,12 +8,9 @@ The list of broken modules is dynamically taken (scraped) from [https://github.c
 **this does not mean that your project will work well with iojs**
 
 ### how
-this is **not** on npm as it might break / become irrelevant / hasn't been tested.
 
-download / clone this repo
 ```
-$ cd iojs-dep-check
-$ npm install -g .
+$ npm install -g iojs-dep-check
 ```
 
 then go to any folder containing a `package.json` `*`
