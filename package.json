@@ -1,6 +1,6 @@
 {
   "name": "iojs-dep-check",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "checks if your module's dependency are compatible with io.js",
   "main": "index.js",
   "bin": {
@@ -20,6 +20,7 @@
   "author": "Michael Derazon",
   "license": "BSD",
   "dependencies": {
+    "chalk": "^1.0.0",
     "cheerio": "^0.18.0",
     "lodash": "^3.1.0",
     "npm": "^2.5.0",

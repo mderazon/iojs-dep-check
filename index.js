@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+var chalk = require('chalk');
 var cheerio = require('cheerio');
 var lodash = require('lodash');
 var npm = require('npm');
@@ -7,7 +8,7 @@ var request = require('request');
 
 npm.load();
 var modules = [];
-
+console.log('processing your dependencies...');
 request.get('https://github.com/iojs/io.js/issues/456', function(err, res) {
   if (err) {
     throw err;
@@ -49,7 +50,8 @@ request.get('https://github.com/iojs/io.js/issues/456', function(err, res) {
           if (conflicting.length) {
             console.log('The following dependencies might not work with io.js:');
             conflicting.forEach(function(m) {
-              console.log(m.name, ':', m.path.substring(process.cwd().length + 1, m.path.length));
+              // console.log(chalk.cyan(m.name), ':', m.path.substring(process.cwd().length + 1, m.path.length));
+              console.log(chalk.cyan(m.name), ':', m.path.split('node_modules/').slice(1).join(' --> ').replace(/\//g, ''));
             });
           } else {
             console.log('Your dependencies look okay from here');
