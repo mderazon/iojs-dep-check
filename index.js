@@ -5,10 +5,13 @@ var cheerio = require('cheerio');
 var lodash = require('lodash');
 var npm = require('npm');
 var request = require('request');
+var spinner = require("char-spinner");
+
 
 npm.load();
 var modules = [];
 console.log('processing your dependencies...');
+var interval = spinner();
 request.get('https://github.com/iojs/io.js/issues/456', function(err, res) {
   if (err) {
     throw err;
@@ -47,6 +50,7 @@ request.get('https://github.com/iojs/io.js/issues/456', function(err, res) {
           var conflicting = modules.filter(function(m) {
             return names.indexOf(m.name) !== -1;
           });
+          clearInterval(interval);
           if (conflicting.length) {
             console.log('The following dependencies might not work with io.js:');
             conflicting.forEach(function(m) {
